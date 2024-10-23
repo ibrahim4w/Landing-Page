@@ -1,20 +1,30 @@
 import logoFooter from "./../../assets/imgs/logo-footer.png";
 import EmailIcon from "./../../assets/imgs/email-icon.png";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const Footer = () => {
+  const scrollIconRef = useRef(null);
 
-    window.addEventListener("scroll", function() {
-        const scrollIcon = document.querySelector(".scroll-icon");
-        const scrollPosition = window.scrollY;
-      
-        // إذا كان التمرير قريبًا من أعلى الصفحة، اجعل الأيقونة تختفي
-        if (scrollPosition < 1000) {  // هنا تحدد متى تختفي الأيقونة
-          scrollIcon.style.opacity = "0";
-        } else {
-          scrollIcon.style.opacity = "1";
-        }
-      });
-      
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition < 800) {
+        scrollIconRef.current.style.opacity = "0";
+      } else {
+        scrollIconRef.current.style.opacity = "1";
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <footer className=" bg-black bg-opacity-95 py-12 relative">
@@ -93,9 +103,15 @@ const Footer = () => {
           </span>
         </div>
       </div>
-      {/* Scroll Up */} 
-      <div className="scroll-icon duration-300 fixed bottom-0 right-5 z-10 p-4 group">
-        <a href="#home" className="w-14 h-14 bg-black flex justify-center items-center">
+      {/* Scroll Up  Icon*/}
+      <div
+        ref={scrollIconRef}
+        className="duration-300 fixed bottom-0 right-5 z-10 p-4 group"
+      >
+        <a
+          href="#home"
+          className="w-14 h-14 bg-black flex justify-center items-center"
+        >
           <i className="fa-solid fa-arrow-up text-sm opacity-50 duration-300 group-hover:opacity-100 group-hover:duration-300" />
         </a>
       </div>

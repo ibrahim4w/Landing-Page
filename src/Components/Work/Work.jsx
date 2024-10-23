@@ -62,7 +62,7 @@ const Work = () => {
     >
       <div className="w-[95%] md:w-[90%] xl:w-[85%] mx-auto text-center">
         {/* Work Header */}
-        <div className="w-full py-40">
+        <div className="w-full pb-40">
           <h3
             data-aos="fade-down"
             className="text-[#39b54a] font-bold text-sm mb-3 tracking-widest uppercase"
@@ -82,7 +82,7 @@ const Work = () => {
       </div>
       {/* Work Images */}
       <div className="bg-white">
-        <div className="w-[95%] md:w-[90%] xl:w-[85%] mx-auto text-center pb-32">
+        <div className="w-[95%] md:w-[90%] xl:w-[85%] mx-auto text-center">
           <div className="w-full mx-auto relative -top-40">
             <div ref={gridRef} className="grid absolute">
               {images.map((img, idx) => (

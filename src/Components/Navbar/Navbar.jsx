@@ -11,7 +11,7 @@ const Navbar = () => {
   const toggleSideNav = () => {
     setIsOpen(!isOpen);
   };
-
+  // Close Navbar
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sideNavRef.current && !sideNavRef.current.contains(event.target)) {
@@ -24,6 +24,35 @@ const Navbar = () => {
     };
   }, [sideNavRef]);
 
+  // Close Navbar when clicking on a link
+  useEffect(() => {
+    const handleLinkClick = (e) => {
+      e.preventDefault();
+
+      const targetId = e.currentTarget.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 1000);
+      }
+    };
+
+    const navLinks = document.querySelectorAll(".navbar-link");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleLinkClick);
+    });
+
+    return () => {
+      navLinks.forEach((link) => {
+        link.removeEventListener("click", handleLinkClick);
+      });
+    };
+  }, []);
+
+  // Change Bg Icon Navbar
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -76,7 +105,7 @@ const Navbar = () => {
                 } transition-all duration-700`}
               >
                 <a
-                  className="scroll-smooth leading-[2rem]"
+                  className="navbar-link scroll-smooth leading-[2rem]"
                   href="#home"
                   title="home"
                 >
@@ -93,7 +122,7 @@ const Navbar = () => {
                 <a
                   href="#about"
                   title="about"
-                  className="scroll-smooth leading-[3rem]"
+                  className=" navbar-linkscroll-smooth leading-[3rem]"
                 >
                   About
                 </a>
@@ -108,7 +137,7 @@ const Navbar = () => {
                 <a
                   href="#services"
                   title="services"
-                  className="scroll-smooth leading-[3rem]"
+                  className="navbar-link scroll-smooth leading-[3rem]"
                 >
                   Services
                 </a>
@@ -123,7 +152,7 @@ const Navbar = () => {
                 <a
                   href="#work"
                   title="work"
-                  className="scroll-smooth leading-[3rem]"
+                  className="navbar-link scroll-smooth leading-[3rem]"
                 >
                   Work
                 </a>
@@ -136,7 +165,7 @@ const Navbar = () => {
                 } transition-all duration-700`}
               >
                 <a
-                  className="scroll-smooth leading-[3rem]"
+                  className="navbar-link scroll-smooth leading-[3rem]"
                   href="#clients"
                   title="clients"
                 >
@@ -151,7 +180,7 @@ const Navbar = () => {
                 } transition-all duration-700`}
               >
                 <a
-                  className="scroll-smooth leading-[3rem]"
+                  className="navbar-link scroll-smooth leading-[3rem]"
                   href="#contact"
                   title="contact"
                 >
