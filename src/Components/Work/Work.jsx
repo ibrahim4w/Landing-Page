@@ -14,10 +14,11 @@ const Work = () => {
   const [open, setOpen] = useState(false);
   const [currentIdx, setCurrentIdx] = useState(0);
 
+  const images = [img1, img2, img3, img4, img5, img6];
+
   // Masonry Initialization
   useEffect(() => {
     const imagesLoaded = () => {
-      // بعد التأكد من تحميل جميع الصور
       new Masonry(gridRef.current, {
         itemSelector: ".gridItem",
         columnWidth: ".gridItem",
@@ -25,30 +26,32 @@ const Work = () => {
         percentPosition: true,
       });
     };
-
+  
     // تحقق من تحميل جميع الصور
     const allImages = gridRef.current.querySelectorAll("img");
     let loadedImagesCount = 0;
-
+  
     allImages.forEach((img) => {
-      if (img.complete) {
+      const checkLoad = () => {
         loadedImagesCount++;
+        if (loadedImagesCount === allImages.length) {
+          imagesLoaded();
+        }
+      };
+  
+      if (img.complete) {
+        checkLoad();
       } else {
-        img.onload = () => {
-          loadedImagesCount++;
-          if (loadedImagesCount === allImages.length) {
-            imagesLoaded();
-          }
-        };
+        img.onload = checkLoad;
+        img.onerror = checkLoad;  // التعامل مع الصور التي تفشل في التحميل
       }
     });
-
+  
     if (loadedImagesCount === allImages.length) {
       imagesLoaded();
     }
   }, []);
-
-  const images = [img1, img2, img3, img4, img5, img6];
+  
 
   const handleImgIdx = (idx) => {
     setCurrentIdx(idx);
