@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("./assets/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "Montserrat-Medium", sans-serif;
+  color: white;
+}
+.loading-fade {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+  -webkit-transition: opacity 1s ease-out;
+  -moz-transition: opacity 1s ease-out;
+  -ms-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+}
+
+.loading-fade.hidden {
+  opacity: 0;
+}

@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+  }
+
+  .slick-dots{
+    position: static;
+    padding-top: 30px;
+  }
+  .slick-dots li button:before{
+    font-size: 12px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+  .slick-dots li button:hover:before{
+    color: #39b54a;
+  }
+  .slick-dots li.slick-active button:before{
+    color: #39b54a;
+  }
+  .slick-dots li{
+    width: 15px;
+  }
+  .slick-next:before , .slick-prev:before{
+    content: none;
+  }
+  .slick-next:hover, .slick-next:focus{
+    background-image: url(./assets/imgs/right-arrow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .slick-next{
+    top: 30%;
+    right: 0px;
+    width: 20px;
+    background-image: url(./assets/imgs/right-arrow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.slick-prev:hover, .slick-prev:focus{
+  background-image: url(./assets/imgs/left-arrow.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.slick-prev{
+  top: 30%;
+  left: 0px;
+  width: 20px;
+  background-image: url(./assets/imgs/left-arrow.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
