@@ -241,7 +241,7 @@ const Navbar = () => {
         {!isOpen && (
           <div
             onClick={toggleSideNav}
-            className={`headerMenuToggle ${bgColor} flex items-center cursor-pointer fixed px-3 py-1 right-5 z-30`}
+            className={`headerMenuToggle ${bgColor} flex items-center cursor-pointer fixed px-3 py-1 right-5 z-[1000]`}
           >
             <span className="text-[#39b54a] duration-300 hover:text-white hover:duration-300">
               Menu
